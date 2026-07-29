@@ -1,4 +1,5 @@
-package sample1;
+package sample2;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
