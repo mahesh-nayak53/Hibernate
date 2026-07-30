@@ -1,5 +1,4 @@
-package sample2;
-
+package sample;
 
 import java.util.List;
 
@@ -7,44 +6,25 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
+
 
 
 public class App {
-
 	public static void main(String[] args) {
-		
-		
-		
 		
 		Configuration config = new Configuration();
 		config.configure();
-		config.addAnnotatedClass(Customer.class);
-		config.addAnnotatedClass(CustomerDetails.class);
-		config.addAnnotatedClass(Orders.class);
-		
+		config.addAnnotatedClass(Employee.class);
 		SessionFactory sessionfactory = config.buildSessionFactory();
 		Session session = sessionfactory.openSession();
+		Transaction  transaction = session.beginTransaction();
 		
-		Transaction transaction = session.beginTransaction();
+		String q = "delete from Employee where id = 101";
 		
-		Customer c = session.get(Customer.class, 94);
-		
-
-		if (c != null) {
-		    System.out.println(c.getCustomerDetails());
-		} else {
-		    System.out.println("Customer not found");
-		}
-		
-		CustomerDetails cd = c.getCustomerDetails();
-		List<Orders> orders = c.getOrders();
-		
-		System.out.println(c);
-		System.out.println(cd);
-		
-		for(Orders order:orders) {
-			System.out.println(order);
-		}
+		Query query = session.createQuery(q);
+		query.executeUpdate();
 		
 		transaction.commit();
 		
@@ -52,29 +32,70 @@ public class App {
 		
 //		Configuration config = new Configuration();
 //		config.configure();
-//		config.addAnnotatedClass(Customer.class);
-//		config.addAnnotatedClass(CustomerDetails.class);
-//		config.addAnnotatedClass(Orders.class);
+//		
+//		config.addAnnotatedClass(Employee.class);
+//		SessionFactory sessionfactory = config.buildSessionFactory();
+//		Session session = sessionfactory.openSession();
+//		Transaction transaction = session.beginTransaction();
+//		
+//		Query query = session.createQuery("update Employee set salary = salary+1000 where desig = 'HR'");
+//		query.executeUpdate();
+//		
+//		transaction.commit();
+		
+		
+		
+//		Configuration config = new Configuration();
+//		config.configure();
+//		
+//		config.addAnnotatedClass(Employee.class);
+//		SessionFactory sessionfactory = config.buildSessionFactory();
+//		Session session = sessionfactory.openSession();
+//		Transaction transaction = session.beginTransaction();
+//		
+//		Employee employee = session.get(Employee.class,101);
+//		
+//		employee.setSalary(7000);
+//		session.update(employee);
+//		transaction.commit();
+		
+		
+//		Configuration config = new Configuration();
+//		
+//		config.configure();
+//		config.addAnnotatedClass(Employee.class);
+//		SessionFactory sessionfactory = config.buildSessionFactory();
+//		Session session = sessionfactory.openSession();
+//		Transaction transaction = session.beginTransaction();
+//		
+//		Query<Employee> query = session.createQuery("FROM Employee", Employee.class);
+//		
+//		List<Employee> employees = query.list();
+//		
+//		for(Employee emp : employees) {
+//			System.out.println(emp.getId());
+//		}
+//		
+//		transaction.commit();
+		
+//		Configuration config = new Configuration();
+//		
+//		config.configure();
+//		
+//		config.addAnnotatedClass(Employee.class);
 //		
 //		SessionFactory sessionfactory = config.buildSessionFactory();
+//		
 //		Session session = sessionfactory.openSession();
 //		
 //		Transaction transaction = session.beginTransaction();
 //		
-//		CustomerDetails cd = new CustomerDetails(5,"alex@gmail.com","88880808808");
-//		
-//		Customer c = new Customer(95,"alex", cd);
-//		
-//		Orders o1 = new Orders(704,"fires",260,c);
-//		Orders o2 = new Orders(705,"pizza",310,c);
-//		
-//		session.save(o1);
-//		session.save(o2);
-//		
+//		Employee e = new Employee(101, "mahesh","mahesh@gmail.com", "HR", 60000);
+//		session.save(e);
 //		transaction.commit();
 		
-	
-
+		
+		
+		
 	}
-
 }
