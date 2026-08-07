@@ -11,8 +11,8 @@ I am building different examples to understand how Hibernate works with database
 * Maven
 * MySQL
 * JDBC
-* IntelliJ IDEA / Eclipse
-* Git & GitHub
+* Eclipse
+
 
 ## Topics Covered
 
