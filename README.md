@@ -13,7 +13,6 @@ I am building different examples to understand how Hibernate works with database
 * JDBC
 * Eclipse
 
-
 ## Topics Covered
 
 | Topic                | Description                                      |
