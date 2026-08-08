@@ -45,23 +45,7 @@ Hibernate/
 
 More Hibernate concepts and examples will be added as I continue learning.
 
-## Current Practice
 
-### One-to-Many Mapping
-
-The `oneToMany` example demonstrates a relationship where one entity can be associated with multiple entities.
-
-Example:
-
-```text
-Customer
-   |
-   ├── Order 1
-   ├── Order 2
-   └── Order 3
-```
-
-This example helps understand entity relationships and Hibernate annotations used for mapping entities.
 
 ## Purpose
 
